@@ -5,39 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <!-- PRIMARY METADATA -->
     <title>Rafa Kimora's 1st Birthday | Enchanted Fairy Garden</title>
     <meta name="title" content="Rafa Kimora's 1st Birthday | Enchanted Fairy Garden">
-    <meta name="description" content="Once upon a time, a little fairy came into our lives... Join us as Rafa Kimora turns ONE on Sunday, October 4, 2026 at Baraceros Residence, Bataan.">
+    <meta name="description" content="Once upon a time, a little fairy came into our lives... Join us as Rafa Kimora turns ONE on Sunday, October 4, 2026.">
     <meta name="theme-color" content="#F8BBD0">
     
-    <!-- OPEN GRAPH / FACEBOOK / MESSENGER / VIBER LINK PREVIEW METADATA -->
+    <!-- LINK PREVIEW METADATA FOR MESSENGER & FACEBOOK -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-domain.com/"> <!-- REPLACE WITH YOUR LIVE HOSTED URL -->
     <meta property="og:title" content="Rafa Kimora is Turning ONE! 🧚‍♀️✨">
     <meta property="og:description" content="You are warmly invited to Rafa Kimora's 1st Birthday Celebration in an Enchanted Fairy Garden! Sunday, Oct 4, 2026 @ 10:00 AM.">
-    <!-- IMPORTANT: Update this URL to your live HTTPS link for Messenger & Facebook link previews -->
     <meta property="og:image" content="DC501428.jpg">
     <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Rafa Kimora B. Rosello 1st Birthday">
 
-    <!-- TWITTER CARD METADATA -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Rafa Kimora's 1st Birthday | Enchanted Fairy Garden">
-    <meta name="twitter:description" content="Join us as Rafa Kimora turns ONE on Sunday, Oct 4, 2026 at Baraceros Residence, Bataan.">
-    <meta name="twitter:image" content="DC501428.jpg">
-
-    <!-- GOOGLE FONTS -->
+    <!-- FONTS & ICONS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- FONTAWESOME ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- TAILWIND CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -67,7 +52,6 @@
     </script>
     
     <style>
-        /* BASE STYLES & PREVENT IN-APP BROWSER OVERFLOW */
         html, body {
             width: 100%;
             height: 100%;
@@ -80,7 +64,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* CUSTOM ARCH PHOTO FRAME */
         .arch-frame {
             border-radius: 200px 200px 30px 30px;
             box-shadow: 0 15px 35px -5px rgba(232, 165, 152, 0.4), 0 0 20px 2px rgba(212, 175, 55, 0.3);
@@ -88,7 +71,6 @@
             outline: 2px solid #E8A598;
         }
 
-        /* GLASSMORPHISM CARDS */
         .glass-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
@@ -97,7 +79,6 @@
             box-shadow: 0 10px 30px -5px rgba(232, 165, 152, 0.15);
         }
 
-        /* FLOATING BUTTERFLY ANIMATION */
         @keyframes floatButterfly {
             0% { transform: translate(0, 0) rotate(0deg); }
             25% { transform: translate(12px, -18px) rotate(6deg); }
@@ -112,7 +93,6 @@
             will-change: transform;
         }
 
-        /* FAIRY GLOW ANIMATION */
         @keyframes fairyGlow {
             0%, 100% { filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5)); }
             50% { filter: drop-shadow(0 0 16px rgba(248, 187, 208, 0.9)); }
@@ -122,7 +102,6 @@
             animation: fairyGlow 3s infinite ease-in-out;
         }
 
-        /* SCROLL REVEAL ANIMATIONS */
         .reveal {
             opacity: 0;
             transform: translateY(25px);
@@ -134,29 +113,25 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* CUSTOM SCROLLBAR */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #FFFDF9; }
-        ::-webkit-scrollbar-thumb { background: #E8A598; border-radius: 10px; }
     </style>
 </head>
 <body class="relative min-h-screen">
 
-    <!-- CANVAS BACKGROUND FOR INTERACTIVE SPARKLES -->
     <canvas id="fairy-dust-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <!-- FLOATING AUDIO CONTROL BUTTON -->
+    <!-- BACKGROUND AUDIO -->
+    <audio id="bg-music" loop preload="auto" src="music.mp3"></audio>
+
+    <!-- AUDIO TOGGLE BUTTON -->
     <div class="fixed bottom-6 right-6 z-40">
         <button id="audio-toggle" onclick="toggleAudio()" aria-label="Toggle Background Music" class="w-14 h-14 rounded-full bg-white/90 text-fairy-gold shadow-lg flex items-center justify-center border-2 border-fairy-rose hover:scale-110 transition-transform duration-300 group">
             <i id="audio-icon" class="fas fa-music text-xl text-fairy-rose group-hover:text-fairy-gold"></i>
         </button>
     </div>
 
-    <!-- ENTRANCE OVERLAY MODAL -->
+    <!-- ENTRANCE MODAL -->
     <div id="entrance-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-fairy-cream/95 backdrop-blur-md px-4 transition-opacity duration-700">
         <div class="max-w-md w-full text-center p-8 glass-card rounded-3xl border-2 border-fairy-pink/50 relative overflow-hidden shadow-2xl">
-            <!-- Decorative Butterflies -->
             <div class="absolute -top-3 -left-3 text-3xl text-fairy-rose butterfly"><i class="fas fa-butterfly"></i></div>
             <div class="absolute -bottom-3 -right-3 text-3xl text-fairy-gold butterfly" style="animation-delay: -3s;"><i class="fas fa-butterfly"></i></div>
 
@@ -176,7 +151,7 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT CONTAINER -->
+    <!-- MAIN CONTENT -->
     <main class="relative z-10 max-w-4xl mx-auto px-4 py-8 space-y-16">
 
         <!-- HERO SECTION -->
@@ -188,22 +163,20 @@
                 Rafa Kimora <span class="text-fairy-rose">is Turning ONE!</span> 🧚‍♀️✨
             </h1>
 
-            <!-- ARCH PHOTO FRAME FOR RAFA -->
-            <div class="relative w-64 md:w-80 mx-auto my-8">
+            <!-- HERO PHOTO WITH FULL ARCH FIT -->
+            <div class="relative w-72 sm:w-80 md:w-96 mx-auto my-8">
                 <div class="absolute inset-0 rounded-full bg-fairy-pink/30 blur-2xl transform scale-110"></div>
                 
-                <div class="arch-frame overflow-hidden bg-white relative min-h-[320px] flex items-center justify-center">
-                    <!-- RAFA'S PHOTO WITH ROBUST FALLBACK HANDLER -->
+                <div class="arch-frame relative w-full aspect-[4/5] overflow-hidden bg-white shadow-xl">
                     <img 
-                        id="rafa-photo" 
+                        id="rafa-hero-img" 
                         src="DC501428.jpg" 
                         alt="Rafa Kimora B. Rosello 1st Birthday" 
-                        class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                        class="absolute inset-0 w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
                         onerror="handlePhotoError(this)"
                     >
                 </div>
 
-                <!-- Floating Accents -->
                 <span class="absolute -top-3 -right-3 text-2xl text-fairy-gold butterfly">✨</span>
                 <span class="absolute bottom-4 -left-6 text-3xl text-fairy-rose butterfly" style="animation-delay: -2s;">🌸</span>
                 <span class="absolute top-1/2 -right-8 text-2xl text-fairy-sage butterfly" style="animation-delay: -4s;">🦋</span>
@@ -214,8 +187,7 @@
             </p>
         </section>
 
-
-        <!-- COUNTDOWN TIMER -->
+        <!-- COUNTDOWN -->
         <section class="glass-card rounded-3xl p-6 md:p-8 text-center reveal">
             <h2 class="font-cinzel text-lg tracking-widest text-fairy-darkSage uppercase mb-2">The Magic Begins In</h2>
             <p class="text-xs text-gray-500 mb-6">Sunday, October 4, 2026 @ 10:00 AM PHT</p>
@@ -240,8 +212,7 @@
             </div>
         </section>
 
-
-        <!-- EVENT DETAILS CARDS -->
+        <!-- EVENT DETAILS -->
         <section class="grid md:grid-cols-3 gap-6 reveal">
             <div class="glass-card rounded-3xl p-6 text-center hover:shadow-xl transition-all duration-300">
                 <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-fairy-lightPink flex items-center justify-center text-fairy-rose text-xl">
@@ -271,8 +242,7 @@
             </div>
         </section>
 
-
-        <!-- OUR LITTLE FAIRY'S STORY -->
+        <!-- STORY -->
         <section class="glass-card rounded-3xl p-8 reveal">
             <div class="text-center mb-8">
                 <p class="font-script text-3xl text-fairy-rose">12 Months of Wonder</p>
@@ -301,8 +271,7 @@
             </div>
         </section>
 
-
-        <!-- EVENT TIMELINE -->
+        <!-- TIMELINE -->
         <section class="glass-card rounded-3xl p-8 reveal">
             <div class="text-center mb-8">
                 <p class="font-script text-3xl text-fairy-rose">The Enchanted Program</p>
@@ -343,8 +312,7 @@
             </div>
         </section>
 
-
-        <!-- VENUE & INTERACTIVE MAPS -->
+        <!-- VENUE MAPS WITH EXACT GPS PIN (14.4870952, 120.5970152) -->
         <section class="glass-card rounded-3xl p-8 text-center reveal">
             <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-fairy-lightPink flex items-center justify-center text-fairy-rose text-2xl fairy-glow">
                 <i class="fas fa-compass"></i>
@@ -355,18 +323,29 @@
                 Capitol Bagong Daan, Batangas Dos, Mariveles, Bataan
             </p>
 
+            <!-- EMBEDDED GOOGLE MAP PIN -->
+            <div class="w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-6 border-2 border-white shadow-md">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    loading="lazy" 
+                    allowfullscreen 
+                    src="https://maps.google.com/maps?q=14.4870952,120.5970152&z=17&output=embed">
+                </iframe>
+            </div>
+
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://www.google.com/maps/search/?api=1&query=Capitol+Bagong+Daan,+Batangas+Dos,+Mariveles,+Bataan" target="_blank" rel="noopener noreferrer" class="py-3 px-6 rounded-full bg-fairy-rose text-white text-xs font-semibold tracking-wider uppercase shadow-md hover:bg-fairy-deepPink transition-colors duration-300 flex items-center justify-center gap-2">
-                    <i class="fas fa-map-marked-alt"></i> Open in Google Maps
+                <a href="https://www.google.com/maps/search/?api=1&query=14.4870952,120.5970152" target="_blank" rel="noopener noreferrer" class="py-3 px-6 rounded-full bg-fairy-rose text-white text-xs font-semibold tracking-wider uppercase shadow-md hover:bg-fairy-deepPink transition-colors duration-300 flex items-center justify-center gap-2">
+                    <i class="fas fa-map-marked-alt"></i> Open Pin in Google Maps
                 </a>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=Capitol+Bagong+Daan,+Batangas+Dos,+Mariveles,+Bataan" target="_blank" rel="noopener noreferrer" class="py-3 px-6 rounded-full border border-fairy-rose text-fairy-rose text-xs font-semibold tracking-wider uppercase hover:bg-fairy-lightPink transition-colors duration-300 flex items-center justify-center gap-2">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=14.4870952,120.5970152" target="_blank" rel="noopener noreferrer" class="py-3 px-6 rounded-full border border-fairy-rose text-fairy-rose text-xs font-semibold tracking-wider uppercase hover:bg-fairy-lightPink transition-colors duration-300 flex items-center justify-center gap-2">
                     <i class="fas fa-directions"></i> Get Directions
                 </a>
             </div>
         </section>
 
-
-        <!-- PHOTO GALLERY SECTION -->
+        <!-- PHOTO GALLERY -->
         <section class="glass-card rounded-3xl p-8 reveal">
             <div class="text-center mb-8">
                 <p class="font-script text-3xl text-fairy-rose">Moments of Magic</p>
@@ -374,8 +353,8 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white">
-                    <img src="DC501428.jpg" alt="Rafa Kimora Fairy Photo" class="w-full h-80 object-cover" onerror="handlePhotoError(this)">
+                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white min-h-[250px]">
+                    <img id="rafa-gallery-img" src="DC501428.jpg" alt="Rafa Kimora Fairy Photo" class="w-full h-80 object-cover" onerror="handlePhotoError(this)">
                 </div>
                 <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-fairy-lightPink flex flex-col items-center justify-center p-6 text-center">
                     <div class="text-fairy-gold text-4xl mb-3">✨ 🧚‍♀️ ✨</div>
@@ -385,8 +364,7 @@
             </div>
         </section>
 
-
-        <!-- FAMILY & PARENTS MESSAGE -->
+        <!-- FAMILY MESSAGE -->
         <section class="grid md:grid-cols-2 gap-6 reveal">
             <div class="glass-card rounded-3xl p-6 text-center border-t-4 border-fairy-rose">
                 <div class="text-3xl text-fairy-rose mb-2"><i class="fas fa-heart"></i></div>
@@ -411,8 +389,7 @@
             </div>
         </section>
 
-
-        <!-- FOOTER & THANK YOU -->
+        <!-- FOOTER -->
         <footer class="text-center py-8 reveal">
             <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-fairy-lightPink flex items-center justify-center text-fairy-rose text-xl">
                 <i class="fas fa-wand-sparkles"></i>
@@ -428,34 +405,43 @@
 
     </main>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- SCRIPT CONFIGURATION -->
     <script>
         /* ----------------------------------------------------
-           1. STABLE PHOTO FALLBACK HANDLER
-           (Ensures NO random/AI photo swap if file path is missing)
+           BACKGROUND FAIRY MUSIC CONFIGURATION
         ---------------------------------------------------- */
+        const BACKGROUND_MUSIC_URL = "music.mp3";
+        const FALLBACK_MUSIC_URL = "https://ia800908.us.archive.org/19/items/FairyTaleMusicBox/FairyTale.mp3";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const audioElem = document.getElementById("bg-music");
+            if (audioElem) {
+                audioElem.src = BACKGROUND_MUSIC_URL;
+                audioElem.onerror = function() {
+                    console.log("Local music.mp3 not found, using fallback stream.");
+                    audioElem.src = FALLBACK_MUSIC_URL;
+                };
+            }
+        });
+
         function handlePhotoError(imgElement) {
-            imgElement.onerror = null; // Prevent infinite loop
-            // Replace with a clean, elegant SVG placeholder frame clearly identifying Rafa
+            imgElement.onerror = null;
             imgElement.style.display = 'none';
             const parent = imgElement.parentElement;
-            if (parent) {
+            if (parent && !parent.querySelector('.photo-placeholder')) {
                 const placeholder = document.createElement('div');
-                placeholder.className = "w-full h-full min-h-[280px] bg-fairy-lightPink flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-fairy-rose/50 rounded-2xl";
+                placeholder.className = "photo-placeholder w-full h-full min-h-[280px] bg-fairy-lightPink flex flex-col items-center justify-center p-6 text-center rounded-2xl";
                 placeholder.innerHTML = `
                     <div class="text-fairy-rose text-4xl mb-2">🧚‍♀️</div>
                     <p class="font-cinzel text-sm font-bold text-gray-800">Rafa Kimora B. Rosello</p>
                     <p class="text-[11px] text-fairy-rose mt-1 font-semibold">1st Birthday Princess</p>
-                    <p class="text-[10px] text-gray-400 mt-3 max-w-[200px]">Photo configuration active. Please upload DC501428.jpg to web host.</p>
+                    <p class="text-[10px] text-gray-400 mt-3 max-w-[200px]">Photo loading. Please ensure DC501428.jpg is uploaded on server.</p>
                 `;
                 parent.appendChild(placeholder);
             }
         }
 
-
-        /* ----------------------------------------------------
-           2. CANVAS FAIRY DUST PARTICLE SYSTEM
-        ---------------------------------------------------- */
+        // CANVAS PARTICLES
         const canvas = document.getElementById('fairy-dust-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -468,9 +454,7 @@
         resizeCanvas();
 
         class Particle {
-            constructor() {
-                this.reset();
-            }
+            constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
@@ -500,26 +484,17 @@
         }
 
         const particleCount = window.innerWidth < 768 ? 35 : 60;
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
+        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
 
-
-        /* ----------------------------------------------------
-           3. COUNTDOWN TIMER TO OCT 4, 2026 @ 10:00 AM PHT
-        ---------------------------------------------------- */
+        // COUNTDOWN
         const targetDate = new Date('2026-10-04T10:00:00+08:00').getTime();
-
         function updateCountdown() {
             const now = new Date().getTime();
             const difference = targetDate - now;
@@ -534,110 +509,52 @@
                 document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
                 document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
                 document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
-            } else {
-                document.getElementById('cd-days').innerText = '00';
-                document.getElementById('cd-hours').innerText = '00';
-                document.getElementById('cd-minutes').innerText = '00';
-                document.getElementById('cd-seconds').innerText = '00';
             }
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-
-        /* ----------------------------------------------------
-           4. WEB AUDIO SYNTHESIZER (FAIRY LULLABY)
-           (Runs cleanly on mobile webviews without external mp3 files)
-        ---------------------------------------------------- */
-        let audioCtx = null;
+        // BACKGROUND AUDIO CONTROLLER
         let isPlaying = false;
-        let musicInterval = null;
-
-        const melodyNotes = [
-            523.25, 659.25, 783.99, 1046.50,
-            880.00, 659.25, 587.33, 659.25,
-            783.99, 659.25, 523.25, 440.00
-        ];
-        let noteIdx = 0;
-
-        function playChimeNote(freq) {
-            if (!audioCtx) return;
-            try {
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-                gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 0.1);
-                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.6);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc.start();
-                osc.stop(audioCtx.currentTime + 1.8);
-            } catch(e) {}
-        }
 
         function toggleAudio() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-
+            const bgAudio = document.getElementById('bg-music');
+            const audioIcon = document.getElementById('audio-icon');
+            if (!bgAudio) return;
+            
             if (isPlaying) {
-                clearInterval(musicInterval);
+                bgAudio.pause();
                 isPlaying = false;
-                document.getElementById('audio-icon').className = 'fas fa-music text-xl text-fairy-rose';
+                if (audioIcon) audioIcon.className = 'fas fa-music text-xl text-fairy-rose';
             } else {
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
-                isPlaying = true;
-                document.getElementById('audio-icon').className = 'fas fa-pause text-xl text-fairy-gold';
-                
-                musicInterval = setInterval(() => {
-                    playChimeNote(melodyNotes[noteIdx]);
-                    noteIdx = (noteIdx + 1) % melodyNotes.length;
-                }, 600);
+                bgAudio.play().then(() => {
+                    isPlaying = true;
+                    if (audioIcon) audioIcon.className = 'fas fa-pause text-xl text-fairy-gold';
+                }).catch(err => {
+                    console.log("Audio playback error, trying fallback...", err);
+                    bgAudio.src = FALLBACK_MUSIC_URL;
+                    bgAudio.play().then(() => {
+                        isPlaying = true;
+                        if (audioIcon) audioIcon.className = 'fas fa-pause text-xl text-fairy-gold';
+                    }).catch(e => console.log("Fallback failed:", e));
+                });
             }
         }
 
-
-        /* ----------------------------------------------------
-           5. ENTRANCE UNVEIL & SPARKLE BURST
-        ---------------------------------------------------- */
         function openInvitation() {
             const modal = document.getElementById('entrance-modal');
             modal.classList.add('opacity-0', 'pointer-events-none');
-
-            // Trigger audio
             toggleAudio();
-
-            // Burst particles
-            for (let i = 0; i < 30; i++) {
-                particles.push(new Particle());
-            }
-
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 800);
+            for (let i = 0; i < 30; i++) particles.push(new Particle());
+            setTimeout(() => { modal.style.display = 'none'; }, 800);
         }
 
-
-        /* ----------------------------------------------------
-           6. INTERSECTION OBSERVER FOR SCROLL REVEAL
-        ---------------------------------------------------- */
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
-
         revealElements.forEach(el => observer.observe(el));
     </script>
 </body>

@@ -119,8 +119,11 @@
 
     <canvas id="fairy-dust-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <!-- BACKGROUND AUDIO -->
-    <audio id="bg-music" loop preload="auto" src="music.mp3"></audio>
+    <!-- MULTI-SOURCE BACKGROUND AUDIO -->
+    <audio id="bg-music" loop preload="auto" playsinline>
+        <source src="music.mp3" type="audio/mpeg">
+        <source src="https://ia800908.us.archive.org/19/items/FairyTaleMusicBox/FairyTale.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- AUDIO TOGGLE BUTTON -->
     <div class="fixed bottom-6 right-6 z-40">
@@ -312,7 +315,7 @@
             </div>
         </section>
 
-        <!-- VENUE MAPS WITH EXACT GPS PIN (14.4870952, 120.5970152) -->
+        <!-- VENUE MAPS -->
         <section class="glass-card rounded-3xl p-8 text-center reveal">
             <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-fairy-lightPink flex items-center justify-center text-fairy-rose text-2xl fairy-glow">
                 <i class="fas fa-compass"></i>
@@ -323,7 +326,6 @@
                 Capitol Bagong Daan, Batangas Dos, Mariveles, Bataan
             </p>
 
-            <!-- EMBEDDED GOOGLE MAP PIN -->
             <div class="w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-6 border-2 border-white shadow-md">
                 <iframe 
                     width="100%" 
@@ -345,21 +347,37 @@
             </div>
         </section>
 
-        <!-- PHOTO GALLERY -->
-        <section class="glass-card rounded-3xl p-8 reveal">
+        <!-- PHOTO GALLERY (UPDATED WITH ALL PHOTOSHOOT IMAGES) -->
+        <section class="glass-card rounded-3xl p-6 md:p-8 reveal">
             <div class="text-center mb-8">
                 <p class="font-script text-3xl text-fairy-rose">Moments of Magic</p>
                 <h2 class="font-cinzel text-xl text-gray-800 font-bold">Photo Gallery</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white min-h-[250px]">
-                    <img id="rafa-gallery-img" src="DC501428.jpg" alt="Rafa Kimora Fairy Photo" class="w-full h-80 object-cover" onerror="handlePhotoError(this)">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white aspect-[4/3]">
+                    <img src="DC501428.jpg" alt="Rafa Kimora Fairy Photo" class="w-full h-full object-cover" onerror="handlePhotoError(this)">
                 </div>
-                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-fairy-lightPink flex flex-col items-center justify-center p-6 text-center">
-                    <div class="text-fairy-gold text-4xl mb-3">✨ 🧚‍♀️ ✨</div>
-                    <h3 class="font-cinzel font-bold text-gray-800 text-sm">More Memories Coming Soon</h3>
-                    <p class="text-xs text-gray-500 mt-2">Check back after the celebration for party highlights!</p>
+                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white aspect-[4/3]">
+                    <img src="DC501488.jpg" alt="Rafa Kimora Fairy Wings Photo" class="w-full h-full object-cover" onerror="handlePhotoError(this)">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white aspect-[4/3]">
+                    <img src="DC501220.jpg" alt="Rafa Kimora Pink Dress Sitting" class="w-full h-full object-cover" onerror="handlePhotoError(this)">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white aspect-[4/3]">
+                    <img src="DC501266.jpg" alt="Rafa Kimora Pink Dress Smile" class="w-full h-full object-cover" onerror="handlePhotoError(this)">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white aspect-[4/3]">
+                    <img src="DC501276.jpg" alt="Rafa Kimora Pink Dress Portrait" class="w-full h-full object-cover" onerror="handlePhotoError(this)">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white aspect-[4/3]">
+                    <img src="DC501540.jpg" alt="Rafa Kimora Cream Dress Sitting" class="w-full h-full object-cover" onerror="handlePhotoError(this)">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white aspect-[4/3]">
+                    <img src="DC501564.jpg" alt="Rafa Kimora Cream Dress Standing" class="w-full h-full object-cover" onerror="handlePhotoError(this)">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300 bg-white aspect-[4/3]">
+                    <img src="DC501588.jpg" alt="Rafa Kimora Crawling Smile" class="w-full h-full object-cover" onerror="handlePhotoError(this)">
                 </div>
             </div>
         </section>
@@ -396,7 +414,7 @@
             </div>
             <p class="font-script text-3xl text-fairy-rose mb-1">Thank You!</p>
             <p class="text-xs text-gray-500 max-w-sm mx-auto mb-4">
-                Thank you for being part of Rafa's magical story. We can't wait to celebrate together in our fairy garden!
+                Thank you for being part of Rafa's magical story. We can'wait to celebrate together in our fairy garden!
             </p>
             <p class="text-[10px] text-gray-400 uppercase tracking-widest font-cinzel">
                 Rafa Kimora • 1st Birthday Celebration
@@ -407,22 +425,40 @@
 
     <!-- SCRIPT CONFIGURATION -->
     <script>
-        /* ----------------------------------------------------
-           BACKGROUND FAIRY MUSIC CONFIGURATION
-        ---------------------------------------------------- */
-        const BACKGROUND_MUSIC_URL = "music.mp3";
-        const FALLBACK_MUSIC_URL = "https://ia800908.us.archive.org/19/items/FairyTaleMusicBox/FairyTale.mp3";
+        let isPlaying = false;
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const audioElem = document.getElementById("bg-music");
-            if (audioElem) {
-                audioElem.src = BACKGROUND_MUSIC_URL;
-                audioElem.onerror = function() {
-                    console.log("Local music.mp3 not found, using fallback stream.");
-                    audioElem.src = FALLBACK_MUSIC_URL;
-                };
+        function toggleAudio() {
+            const bgAudio = document.getElementById('bg-music');
+            const audioIcon = document.getElementById('audio-icon');
+            if (!bgAudio) return;
+            
+            if (isPlaying) {
+                bgAudio.pause();
+                isPlaying = false;
+                if (audioIcon) audioIcon.className = 'fas fa-music text-xl text-fairy-rose';
+            } else {
+                let playPromise = bgAudio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isPlaying = true;
+                        if (audioIcon) audioIcon.className = 'fas fa-pause text-xl text-fairy-gold';
+                    }).catch(err => {
+                        console.log("Audio play error:", err);
+                    });
+                }
             }
-        });
+        }
+
+        function openInvitation() {
+            const modal = document.getElementById('entrance-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            
+            // Start audio on user click
+            toggleAudio();
+
+            for (let i = 0; i < 30; i++) particles.push(new Particle());
+            setTimeout(() => { modal.style.display = 'none'; }, 800);
+        }
 
         function handlePhotoError(imgElement) {
             imgElement.onerror = null;
@@ -430,12 +466,11 @@
             const parent = imgElement.parentElement;
             if (parent && !parent.querySelector('.photo-placeholder')) {
                 const placeholder = document.createElement('div');
-                placeholder.className = "photo-placeholder w-full h-full min-h-[280px] bg-fairy-lightPink flex flex-col items-center justify-center p-6 text-center rounded-2xl";
+                placeholder.className = "photo-placeholder w-full h-full min-h-[180px] bg-fairy-lightPink flex flex-col items-center justify-center p-4 text-center rounded-2xl";
                 placeholder.innerHTML = `
-                    <div class="text-fairy-rose text-4xl mb-2">🧚‍♀️</div>
-                    <p class="font-cinzel text-sm font-bold text-gray-800">Rafa Kimora B. Rosello</p>
-                    <p class="text-[11px] text-fairy-rose mt-1 font-semibold">1st Birthday Princess</p>
-                    <p class="text-[10px] text-gray-400 mt-3 max-w-[200px]">Photo loading. Please ensure DC501428.jpg is uploaded on server.</p>
+                    <div class="text-fairy-rose text-2xl mb-1">🧚‍♀️</div>
+                    <p class="font-cinzel text-xs font-bold text-gray-800">Rafa Kimora</p>
+                    <p class="text-[9px] text-gray-400 mt-1">Photo loading...</p>
                 `;
                 parent.appendChild(placeholder);
             }
@@ -514,41 +549,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // BACKGROUND AUDIO CONTROLLER
-        let isPlaying = false;
-
-        function toggleAudio() {
-            const bgAudio = document.getElementById('bg-music');
-            const audioIcon = document.getElementById('audio-icon');
-            if (!bgAudio) return;
-            
-            if (isPlaying) {
-                bgAudio.pause();
-                isPlaying = false;
-                if (audioIcon) audioIcon.className = 'fas fa-music text-xl text-fairy-rose';
-            } else {
-                bgAudio.play().then(() => {
-                    isPlaying = true;
-                    if (audioIcon) audioIcon.className = 'fas fa-pause text-xl text-fairy-gold';
-                }).catch(err => {
-                    console.log("Audio playback error, trying fallback...", err);
-                    bgAudio.src = FALLBACK_MUSIC_URL;
-                    bgAudio.play().then(() => {
-                        isPlaying = true;
-                        if (audioIcon) audioIcon.className = 'fas fa-pause text-xl text-fairy-gold';
-                    }).catch(e => console.log("Fallback failed:", e));
-                });
-            }
-        }
-
-        function openInvitation() {
-            const modal = document.getElementById('entrance-modal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            toggleAudio();
-            for (let i = 0; i < 30; i++) particles.push(new Particle());
-            setTimeout(() => { modal.style.display = 'none'; }, 800);
-        }
-
+        // REVEAL ANIMATION
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
